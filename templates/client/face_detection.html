@@ -1,0 +1,13 @@
+{% extends "client/base.html" %}
+{% block title %} Face detection {% endblock %}
+{% block content %}
+<main class="main-content">
+    <div class="page">
+        <div class="container">
+            <h1>Face detection</h1>
+            <video id="video" autoplay style="display: none;"></video>
+            <canvas id="canvas" width="800px" height="600px"></canvas>
+        </div>
+    </div>
+</main>
+{% endblock %}

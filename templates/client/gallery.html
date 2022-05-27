@@ -1,0 +1,40 @@
+{% extends "client/base.html" %}
+{% block title %} Gallery {% endblock %}
+{% block content %}
+<main class="main-content">
+    <div class="page">
+        <div class="container">
+            <div class="text-center">
+                <div class="filter-links filterable-nav">
+                    <select class="mobile-filter">
+                        <option value="*">Show all</option>
+                        <option value="1">hair</option>
+                        <option value="2">face</option>
+                        <option value="3">makeup</option>
+                    </select>
+                    <a href="#" class="current wow fadeInRight" data-filter="*">Show all</a>
+                    <a href="#" class="wow fadeInRight" data-wow-delay=".2s" data-filter="1">hair</a>
+                    <a href="#" class="wow fadeInRight" data-wow-delay=".8s" data-filter="2">face</a>
+                    <a href="#" class="wow fadeInRight" data-wow-delay="1s" data-filter="3">makeup</a>
+                </div>
+            </div>
+
+            <div class="filterable-items isotope" style="position: relative; overflow: hidden; height: 891px;">
+                {% for value in data %}
+                <div class="gallery-item filterable-item {{value.category}} isotope-item"
+                    style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 0px, 0px);">
+                    <a href="{{url_for('static', filename='uploads/' + value.img)}}">
+                        <figure class="featured-image">
+                            <img src="{{url_for('static', filename='uploads/' + value.img)}}" alt="">
+                            <figcaption>
+                                <h2 class="gallery-title">{{value.name}}</h2>
+                            </figcaption>
+                        </figure>
+                    </a>
+                </div> 
+                {% endfor %}          
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "client/base.html" %}
+{% block title %} Services {% endblock %}
+{% block content %}
+<main class="main-content">
+    <div class="page">
+        <div class="container">
+            <p>Fusce nec congue diam. Maecenas condimentum porttitor nibh in dignissim. Maecenas dictum felis id
+                suscipit facilisis. Quisque et ipsum eleifend, commodo tellus at, ultrices purus. Suspendisse bibendum
+                diam et tortor sodales sagittis. Phasellus rutrum justo libero, in gravida sem laoreet in. Aenean sed
+                elit nec felis elementum scelerisque sit amet nec leo. Curabitur ipsum justo, laoreet quis feugiat at,
+                blandit vel mauris. Vivamus luctus placerat nibh quis tempus. Nunc molestie, mi et suscipit vulputate,
+                sem est rhoncus arcu, a vestibulum nunc magna ac tortor. Sed malesuada quis sem in tincidunt. Sed cursus
+                enim orci, vitae vulputate est condimentum pharetra. Curabitur pretium est quis venenatis pharetra.
+                Vestibulum a leo at quam rutrum vestibulum. Aenean tincidunt tellus quis tortor feugiat, rutrum
+                sollicitudin .
+            </p>
+
+            {% for value in data %}
+            <div class="row">
+                {% for i in value %}
+                <div class="col-md-3">
+                    <div class="feature">
+                        <img src="{{url_for('static', filename='uploads/' + i.name_img)}}" class="feature-image">
+                        <h3 class="feature-title">{{i.name}}</h3>
+                        <p>{{i.description}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="price-list">
+                        <h2 class="section-title">Men's prices</h2>
+                        <ul class="prices">
+                            <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
+                            <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
+                            <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
+                            <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
+                            <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="price-list">
+                        <h2 class="section-title">women's prices</h2>
+                        <ul class="prices">
+                            <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
+                            <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
+                            <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
+                            <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
+                            <li>Maecenas dictum felis id suscipit facilisis<span class="price">$50</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

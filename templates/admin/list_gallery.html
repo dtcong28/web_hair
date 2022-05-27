@@ -1,0 +1,55 @@
+{% extends "admin/base.html" %}
+{% block title %} add service {% endblock %}
+{% block content %}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>List gallery</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="ml-4 mr-5 ">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Category</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for value in data %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{value.name}}</td>
+                <td>
+                    <div>
+                        <img src="{{url_for('static', filename='uploads/' + value.img)}}" width="70" height="70">
+                    </div>
+                </td>
+                {% if value.category == 1 %}
+                    <td>Hair</td>
+                {% endif %}
+                {% if value.category == 2 %}
+                    <td>Face</td>
+                {% endif %}
+                {% if value.category == 3 %}
+                    <td>Make up</td>
+                {% endif %}
+                <td><a href="{{ url_for('viewsAdmin.delete_gallery',id=value.id)}}">Delete</a><br>
+                    <a href="{{ url_for('viewsAdmin.edit_gallery',id=value.id)}}">Edit</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+<!-- /.content -->
+
+{% endblock %}

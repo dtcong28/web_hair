@@ -1,0 +1,44 @@
+{% extends "admin/base.html" %}
+{% block title %} add service {% endblock %}
+{% block content %}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>List service</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+<!-- Main content -->
+<section class="ml-4 mr-5 ">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Name</th>
+                <th scope="col">Image</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for value in data %}
+            <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{value.name}}</td>
+                <td>
+                    <div>
+                        <img src="{{url_for('static', filename='uploads/' + value.name_img)}}" width="70" height="70">
+                    </div>
+                </td>
+                <td><a href="{{ url_for('viewsAdmin.delete',id=value.id)}}">Delete</a><br><a href="{{ url_for('viewsAdmin.detail',id=value.id)}}">Detail</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</section>
+<!-- /.content -->
+
+{% endblock %}
